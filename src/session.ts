@@ -68,6 +68,11 @@ export interface ISession {
    */
   endTime: any;
 
+  /**
+   * @returns {} Sip headers map of the call.
+   */
+  sipHeaders: any;
+
   accept(): Promise<ISessionAccept | void>;
   reject(rejectOptions?: InvitationRejectOptions): Promise<void>;
   /**
@@ -276,6 +281,10 @@ export class SessionImpl extends EventEmitter implements ISession {
     return this.session.endTime;
   }
 
+  get sipHeaders(): any {
+    return this.session.request.headers;
+  }
+
   public accept(): Promise<void> {
     throw new Error('Should be implemented in superclass');
   }
@@ -390,6 +399,7 @@ export class SessionImpl extends EventEmitter implements ISession {
       'media',
       'phoneNumber',
       'remoteIdentity',
+      'sipHeaders',
       'saidBye',
       'startTime',
       'stats',

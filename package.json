@@ -1,13 +1,13 @@
 {
   "name": "webphone-lib-mod",
   "version": "0.2.22",
-  "description": "Webphone Lib",
+  "description": "Webphone Lib Mod",
   "author": "Open VoIP Alliance",
   "license": "MIT",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
-    "clean": "rm -fR dist/* build/*",
+    "clean": "",
     "build": "npm run clean && rollup -c",
     "build-watch": "npm run clean && rollup -cw",
     "serve": "serve -l 1235",
