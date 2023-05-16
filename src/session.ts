@@ -71,7 +71,7 @@ export interface ISession {
   /**
    * @returns {} Sip headers map of the call.
    */
-  sipHeaders: any;
+  sipheaders: any;
 
   accept(): Promise<ISessionAccept | void>;
   reject(rejectOptions?: InvitationRejectOptions): Promise<void>;
@@ -158,6 +158,7 @@ export class SessionImpl extends EventEmitter implements ISession {
   public readonly stats: SessionStats;
   public readonly audioConnected: Promise<void>;
   public readonly isIncoming: boolean;
+  public readonly sipheaders: any;
   public saidBye: boolean;
   public holdState: boolean;
   public status: SessionStatus = SessionStatus.TRYING;
@@ -192,6 +193,7 @@ export class SessionImpl extends EventEmitter implements ISession {
     super();
     this.session = session;
     this.id = session.request.callId;
+    this.sipheaders = session.request.headers;
     this.media = new SessionMedia(this, media);
     this.media.on('mediaFailure', () => {
       this.session.bye();
@@ -279,10 +281,6 @@ export class SessionImpl extends EventEmitter implements ISession {
 
   get endTime(): Date {
     return this.session.endTime;
-  }
-
-  get sipHeaders(): any {
-    return this.session.request.headers;
   }
 
   public accept(): Promise<void> {
@@ -395,11 +393,11 @@ export class SessionImpl extends EventEmitter implements ISession {
       'endTime',
       'holdState',
       'id',
+      'sipheaders',
       'isIncoming',
       'media',
       'phoneNumber',
       'remoteIdentity',
-      'sipHeaders',
       'saidBye',
       'startTime',
       'stats',
