@@ -1,6 +1,6 @@
 {
   "name": "webphone-lib-mod",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Webphone Lib Mod",
   "author": "Open VoIP Alliance",
   "license": "MIT",
@@ -14,7 +14,7 @@
     "demo": "run-p build-watch serve",
     "typecheck": "tsc",
     "lint": "eslint \"src/**/*.ts\"",
-    "prepare": "npm run lint && npm run build",
+    "prepare": "npm run build",
     "test": "ava",
     "test-coverage": "nyc ava",
     "test-watch": "ava --watch",

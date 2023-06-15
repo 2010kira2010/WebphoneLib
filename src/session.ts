@@ -71,7 +71,7 @@ export interface ISession {
   /**
    * @returns {} Sip headers map of the call.
    */
-  sipheaders: any;
+  sipheaders: ISipHeader;
 
   accept(): Promise<ISessionAccept | void>;
   reject(rejectOptions?: InvitationRejectOptions): Promise<void>;
@@ -149,6 +149,16 @@ export interface ISessionCancelled {
   reason?: string;
 }
 
+export interface ISipHeader {
+  Via?: any;
+  From?: any;
+  To?: any;
+  Contact?: any;
+  Linkedid?: any;
+  Leadid?: any;
+  Dialer?: any;
+}
+
 /**
  * @hidden
  */
@@ -158,7 +168,7 @@ export class SessionImpl extends EventEmitter implements ISession {
   public readonly stats: SessionStats;
   public readonly audioConnected: Promise<void>;
   public readonly isIncoming: boolean;
-  public readonly sipheaders: any;
+  public readonly sipheaders: ISipHeader;
   public saidBye: boolean;
   public holdState: boolean;
   public status: SessionStatus = SessionStatus.TRYING;
