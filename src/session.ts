@@ -149,14 +149,19 @@ export interface ISessionCancelled {
   reason?: string;
 }
 
+export interface ISipHeaderArray {
+  raw?: string;
+  parsed?: string;
+}
+
 export interface ISipHeader {
-  Via?: any;
-  From?: any;
-  To?: any;
-  Contact?: any;
-  Linkedid?: any;
-  Leadid?: any;
-  Dialer?: any;
+  Via?: ISipHeaderArray[];
+  From?: ISipHeaderArray[];
+  To?: ISipHeaderArray[];
+  Contact?: ISipHeaderArray[];
+  Linkedid?: ISipHeaderArray[];
+  Leadid?: ISipHeaderArray[];
+  Dialer?: ISipHeaderArray[];
 }
 
 /**
